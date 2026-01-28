@@ -6,6 +6,7 @@ double tempValue;
 double humidLevel;
 
 void setup() {
+pinMode(4, OUTPUT);
 dht.begin();
 u8x8.begin();
 u8x8.setFlipMode(1);
@@ -20,6 +21,14 @@ u8x8.print("Humidity: ");
 u8x8.println(humidLevel);
 u8x8.print("Temp: ");
 u8x8.println(tempValue);
-
+if (humidLevel > 70) {
+    tone(5, 1000);  
+    digitalWrite(4, HIGH); 
+    delay(1000);                      
+    digitalWrite(4, LOW);   
+    delay(1000);    
+} else {
+    noTone(5);   
+}
 }
 
